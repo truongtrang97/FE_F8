@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // --- object cơ bản----
+        var mykey='address'
+        var myobject={
+            name:'Sơn Dang',
+            age:18,
+            [mykey]:'Hanoi',
+            getName: function(){
+                return this.name
+            }
+        }
+        // key:value
+        // thêm key và value mới
+        myobject.email='abc'
+        myobject['email-string']='1344'
+        console.log(myobject)
+        //lấy value của object
+        console.log(myobject.name)
+        console.log(myobject[mykey])
+        // note khi [ key name dưới dạng string]
+        // xóa đi 1 value và key
+        delete myobject.age
+        console.log(myobject)
+        console.log(myobject.getName())//gọi hàm 
+        // Cách gọi value trong object
+        // nếu value là function--> gọi là phương thức (method)
+        //  còn lại các dạng dữ liệu khác gọi là thuộc tính(property)
+
+        //  object contructor__xây dựng đối tượng
+        // 1. xây dựng cấu trúc mô tả đối tượng 
+        function User(firstname,lastname,age){
+         this.firstname = firstname,
+         this.lastname= lastname,
+         this.age=age
+         this.getName=function(){
+             return `${this.firstname} ${this.lastname}`
+         }
+        }
+        var athor= new User('TRANG','trương',18)
+        var user= new User('Sơn','Đăng',28)
+        console.log(athor)
+        console.log(user)
+        //ngoài các thuộc tính có sẵn của object contructor còn có thể thêm các thuộc tính khác tùy
+         athor.name='abc'
+         user.adress='vietnam'
+         console.log(athor.getName())
+         console.log(user.getName())
+
+         //----object prototype- basic----
+        //  prototype là gì?
+        // xây dựng thêm thuộc tính , phương thức cho object contructor từ bên ngoài bằng prototype
+        User.prototype.email='trangtruong.gmail.com'
+        User.prototype.getName=function(){
+            return this.email
+        }
+        console.log(athor.email)
+        console.log(user.email)
+        // ---Đối tượng date---
+        var date = new Date()
+        console.log(typeof date)//object
+        console.log(date)// dữ liệu kiểu string
+        var newdate=Date()
+        console.log(typeof newdate)// trả về string
+        //note muốn biến Date thành 1 đối tượng phải thêm new 
+        console.log(date.getFullYear())// lấy ra năm 2022
+        console.log (date.getMonth()+1)// tháng11
+        console.log(date.getDate())
+        console.log(date.getHours())
+        console.log(date.getMinutes())
+        console.log(date.getSeconds())
+        //Tham khảo: developer.mozilla.org  
+
+        // ----Math object----
+        console.log(Math.PI)
+        console.log(Math.round(1.35))//1 (làm tròn)
+        console.log(Math.abs(-4)) //giá trị tuyệt đối
+        console.log(Math.ceil(4.1))//làm tròn trên   5
+        console.log(Math.floor(4.999))//4 - làm tròn dưới
+        console.log(Math.random())
+        console.log(Math.floor(Math.random()*10))
+        var random=Math.floor(Math.random()*3)//radom từ 1->3
+        var bonus=['10coin','20coin','12coin']
+        console.log(bonus[random])
+        // ứng dụng lm game
+        console.log(Math.min(-1,5,6,90))
+        console.log(Math.max(-1,5,6,90))
+
+
+
+
+
+    </script>
+</body>
+</html>

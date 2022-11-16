@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // first function
+        // định nghĩa function'
+        
+        function writeLog(mess1,mess2){
+            console.log(mess1)
+            console.log(mess2)
+        }
+        writeLog('TRANGTRANG')
+
+        // Arguments
+        function testArguments(){
+            console.log(arguments)
+        }
+        testArguments('logtrang','abc',123,'trangtrang')//trả về một đối tượng Array arguments(4)['logtrang','abc',123,'trangtrang'] 
+
+        function argumentsWithFor(){
+            var mystring=''
+            for(var param of arguments){
+                mystring+=`${param} - `
+            }
+            console.log(mystring)
+        }
+        argumentsWithFor('123','acb',{})//trả về '123','acb',{} trên 3 dòng
+        // cho các phần tử cách nhau bằng dấu cách
+        
+        //Return trong hàm
+        var isconfirm = confirm('hihi') //sau khi chọn option xong mới hiện kết quả log
+        console.log(isconfirm)
+
+        function testReturn(a,b){
+            return a+b
+        }
+        var result =testReturn(1,2)
+        console.log(result)
+
+        //Hai hàm cùng tên , sẽ chạy hàm thứ 2
+        function test()
+        {
+            console.log('test1')
+        }
+        function test(){
+            console.log('trang')
+        }
+        test()
+        
+        function ac(a,b){
+        return (a.toString()+b.toString())
+        }
+         var kq= ac(2,9)
+         console.log(kq)
+    
+
+        //Định nghĩa hàm trong hàm 
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var firstname= 'trang'
+        var lastname='trương'
+        var fullname= `tôi là ${firstname} ${lastname}`
+        console.log(fullname)
+        console.log(typeof firstname)
+        // PHƯƠNG THỨC VÀ THUỘC TÍNH LÀM VIỆC VỚI CHUỖI
+        // keyword: Javascript string method
+        // 1.length
+        var myString ="Hoc JS tai JS F8 JS"
+        console.log(myString.length)//trả về 13
+        // 2. find index : tìm được vị trí  kí tự trong chuỗi
+        console.log(myString.indexOf ('JS'))//trả về 4
+        // trường hợp có nhiều 'JS' thì sẽ trả về vị trí 'JS' đầu tiên của chuỗi
+        console.log(myString.indexOf ('abc'))//trả về -1 (khi kí tự không có trong chuỗi thì trả về -1)
+        console.log(myString.indexOf('JS',7))// trả về 11, tính từ vị trí số 7(bỏ qua JS đầu tiên)
+        console.log(myString.search('JS'))// giống indexOf nhưng chỉ trả về được vị trí đầu tiên
+        console.log(myString.lastIndexOf('JS'))// Trả về 'JS' cuối cùng 17
+        // 3. cut string__ cắt chuỗi 
+        console.log(myString.slice(4,6))//cắt chữ 'JS' __4,6 vị trí bắt đầu và vị trí kết thúc
+        console.log(myString.slice(4)) //cắt từ chữ JS đến hết về sau__JS tai JS F8 JS
+        // cắt từ phải sang trái (tính số thứ tự từ 0, -1,-2,-3...
+        console.log(myString.slice(-5,-2))//cắt F8
+        //4. Replace()ghi đè
+        console.log(myString.replace('JS','javascript'))//thay thế Hoc javascript tai JS F8 JS
+        //biểu thức chính quy /JS/g _tìm được tất cả chữ JS có trong chuỗi
+        console.log(myString.replace(/JS/g,'react'))// Hoc react tai react F8 react
+        //5. convert to upper case (chuyển chữ thường thành chữ hoa)
+        console.log(myString.toUpperCase())//HOC JS TAI JS F8 JS
+        //6. convert to lower case (chuyển chữ hoa thành chữ thường)
+        console.log(myString.toLowerCase())//hoc js tai js f8 js
+        // 7. Trim (loại bỏ khoảng trắng 2 bên của chuỗi)
+        console.log(myString.trim())
+        //8. split (dựa vào 1 điểm chung có thể cắt 1 chuỗi thành array)
+        var string='Javascript,php,react'
+        console.log(string.split( ','))//['Javascript', 'php', 'react']
+        // điểm chung ','=> split ni quan trọng nhất là tìm được điểm chung
+        var js="Javascript"
+        console.log(js.split(''))//['J', 'a', 'v', 'a', 's', 'c', 'r', 'i', 'p', 't']
+        //9. get character by index (lấy kí tự của chuỗi dựa vào index )
+        console.log(js.charAt(0))//trả về J
+        console.log(js.charAt(12))//trả về string rỗng
+        console.log(js[0])//trả về J
+        console.log(js[12])//trả về undefined
+
+
+        
+    </script>
+</body>
+</html>

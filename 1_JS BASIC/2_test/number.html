@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 
+         */
+        var a=1
+        var b=3.14
+        var c= new Number (2)
+        console.log(typeof c) //object __khuyên k nên dùng cách này
+        var othernumber =20/'abc'
+        console.log(othernumber)//NaN
+        //check số có phải NaN
+        console.log(isNaN(othernumber))//true
+
+        //chuyển số sang String
+        console.log(a.toString())
+        console.log(typeof a.toString())//string
+
+        // lam tron so
+        console.log(b.toFixed())//3
+        console.log(b.toFixed(2))//3.14
+    </script>
+
+</body>
+</html>

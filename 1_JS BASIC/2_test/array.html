@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * Thao tác với mảng
+         * + tạo mảng
+         * + Truy xuất mảng
+         * - Độ dài mảng
+         * - Lấy giá tri theo index
+         */
+        var array1=[
+            "js",
+            "php",
+            {},
+            function(){},
+            123,
+            undefined,
+            null,
+            NaN
+        ]
+        // Array có thể chứa tất cả các kiểu dữ liệu
+        // note : index được đánh số tự động từ 0-> 
+        console.log(array1)
+        //Truy xuất mảng
+        console.log(array1.length)//8
+        console.log(array1[3])
+        // ĐỂ KIỂM TRA CÓ PHẢI MẢNG K TA KHÔNG DÙNG typeof() để kiểm tra vì nó cho kết quá object
+        console.log(Array.isArray(array1)) //true
+        console.log(Array.isArray({})) //false
+
+        // keyword: javscript array method
+        // các phương thức hay dùng
+        //+ toString: chuyển array sang string
+        var languages=[
+        'JS',
+        'PHP',
+        'reactjs',
+        'Ruby'
+        ]
+        console.log(languages.toString())//JS,PHP,reactjs,Ruby__ dấu , ni không thay đổi được _ được tự động thêm vô string để ngăn cách    
+        console.log(typeof languages.toString())//string
+        // Các phương thức thường sử dụng của mảng
+        // console.log(languages.pop())//Ruby
+        // console.log(languages)
+        // console.log(languages.push('Dart'))
+        // console.log(languages)
+        // console.log(languages.shift())
+        // console.log(languages)
+        // console.log(languages.unshift('ABC'))
+        // console.log(languages)
+        // console.log(languages.splice(1,3))
+        // console.log(languages)
+        console.log(languages.splice(1,1,'Dart'))//['PHP']
+        console.log(languages)// ['JS', 'Dart', 'reactjs', 'Ruby']
+        var a1=['a','c','b']
+        var b1=[1,2,3]
+        console.log(a1.concat(b1))
+        console.log(a1.slice(0,1))//
+        console.log(a1)
+
+        // ---Các method của array---
+        var courses = [
+            {
+            id:1,
+            name: 'Javascript',
+            coin: 0
+            },
+            {
+            id:2,
+            name: 'PHP',
+            coin: 0
+            },
+            {
+            id:3,
+            name: 'React',
+            coin: 0
+            }
+        ]
+        //forEach() : duyệt qua từng phần tử của mảng
+
+        var forEach11 =courses.forEach( function(course,index){
+            return index,course
+        })//truyền vào 1 function (expression function)
+        console.log(forEach11)
+        // every(): kiểm tra tất cả các phần tử của mảng thỏa mãn 1 điều kiện naò đó
+         var isFREE= courses.every(function(course,index){
+            return course.coin===0//duyệt qua từng phần tử đồng thời kiểm tra điều kiện này(if k thỏa dừng trả về false)
+        })
+         console.log("isFREE1: ", isFREE)//false
+
+        //every
+        Array.prototype.every2=function(callback){
+            for(var i=0;i<this.length;i++){
+                var output=callback(this[i],i)
+                if(output===false){
+                    break
+                }
+            }
+            return output
+        }
+        var isFREE= courses.every2(function(course,index){
+            return course.coin===0//duyệt qua từng phần tử đồng thời kiểm tra điều kiện này(if k thỏa dừng trả về false)
+        })
+         console.log("isFREE2: ", isFREE)//false
+
+        //some(): kiểm tra có phần tử nào của mảng thỏa mãn 1 điều kiện nào đó không
+         var isSome= courses.some(function(course,index){
+             return course.coin !==0
+         })
+         console.log(isSome)//true
+        // find (): kiểm tra phần tử của mảng có thỏa mãn 1 điều kiện nào đó, và trả về phần tử đầu tiên thỏa mãn
+         var isFind= courses.find(function(course, index) {
+             return course.coin == 250
+             
+         })
+         console.log(isFind)
+        //filter (): kiểm tra phần tử của mảng có thỏa mãn 1 điều kiện nào đó không, và trả về tất cả các phần tử thỏa mãn đó
+         var isfilter=courses.filter(function(course,index){
+             return course.coin==0
+         })
+         console.log(isfilter)
+
+        // map: dùng để chỉnh sửa element của array--> trả về 1 mảng có số lượng phần tử bằng số lượng phần tử của mảng cũ
+        function coursehandle(course){
+        //  console.log(course)
+        // return course
+        return{
+            id:course.id,
+            name: ` Khóa học ${course.name}`,
+            coin: course.coin,
+            textcoin: 250
+        }
+        
+        }
+        var listcourse= courses.map(coursehandle)
+        console.log(listcourse)
+        // function trên return lại cái gì, cái đó chính là element của array mới
+
+        // ứng dụng hiển thị trên website
+        function viewweb(course){
+            return `<h2> ${course.name} </h2>`
+        }
+         var listview=courses.map(viewweb)
+         console.log(listview.join(''))
+
+        //--reduce method---
+        // sử dungj khi muốn nhận về 1 giá trị duy nhất
+        //  function trong reduce nhận các đối số (giá trị tích trữ, giá trị hiện tại, index hiện tại, mảng gốc)
+        // mảng.reduce(function, giá trị khởi tạo)
+        function reducehandle(acc, curr,curindex, originarray){
+            return acc+curr.coin
+        }
+        var resultreduce=courses.reduce(reducehandle,0)
+        console.log(resultreduce)
+        // giá trị khởi tạo nếu không truyền vào thì nó sẽ lấy giá trị đầu tiên của mảng làm giá trị khởi tạo
+        // trường hợp kiểu dữ liệu cần nhận về , cùng kiểu dữ liệu với phần tử của mảng thì không cần nhập giá trị khởi tạo
+        // Flat- "Làm phẳng mảng từ Dept array - mảng sâu"
+        var deptarrray =[1,2,[3,4],5,6,[7,8,9]]
+        var flatarray=deptarrray.reduce(function(flatarr,curritem){
+            return flatarr.concat(curritem)
+        },[])
+        console.log(flatarray)
+        // lấy ra các khóa học và đưa vào 1 mảng mới
+        var topic =[
+            {
+                topic: 'Frontend',
+                course: [
+                    {
+                        id:1,
+                        title:'HTML,CSS'
+                    },
+                    {
+                        id:2,
+                        title:'Javascript'
+                    }
+                ]
+
+            },
+            {
+                topic: 'Backend',
+                course: [
+                    {
+                        id:1,
+                        title:'PHP'
+                    },
+                    {
+                        id:2,
+                        title:'JS nc'
+                    }
+                ]
+
+            }
+        ]
+
+        var listcourse = topic.reduce(function(listcoureses, currlist){
+            return listcoureses.concat(currlist.course) 
+        },[])
+        console.log(listcourse)
+        var html = listcourse.map(function(course){
+            return `
+            <div>${course.title}</div>
+            <div>ID:${course.id} </div>
+            `
+        })
+        console.log(html.join(''))
+        // ----includes method----
+        //  dùng để kiểm tra trong chuỗi có ký tự nào đó không -> trả về true, false
+        console.log(String.prototype.includes)
+        console.log(Array.prototype.includes)
+        console.log(Number.prototype.includes)
+        ///method ni chỉ áp dụng cho string và array 
+        var A ='Javascript'
+        console.log(A.includes('Ja'))
+        // với array
+        var B =['A','BC','NC']
+        console.log(B.includes('BC'))
+        // thêm đối số('kí tự cần tìm', vị trí bắt đầu tìm)
+
+       
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Callback:
+        /**
+         * Là hàm được truyền qua đối số
+         * Khi gọi hàm khác
+         * 
+         * là hàm
+         * Được truyền qua đối số
+         * Được gọi lại trong hàm truyền đối số
+         */
+
+        function A(B){
+            B(34)
+        }
+        function B(a){
+            console.log('Đây là callback: ', a)
+        }
+        B(3)
+        A(B)
+
+        //thêm phương thức cho array
+        // map2 được định nghĩa trong prototype của array
+        Array.prototype.map2=function(callback){
+        //   console.log(this)
+         var arraylength= this.length
+         var output =[]
+         //thực hiện lặp
+         for(var i=0;i<arraylength;i++){
+          var result= callback(this[i],i)
+          output.push(result)
+         }
+         return output
+        }
+
+        var courses=['JS','ReactJ','HTMLJ']//bình thường array ni cũng được tạo ra từ object contructor của Array nên nó sẽ có phương thức map2 vừa được định nghĩa
+        // map hoạt động ;
+        // 1. lặp qua array 
+        // 2. gọi lại callback và trả về course
+
+        // gọi callback
+          var map2= courses.map2(function(course){
+              return `<h2>${course}</h2>`
+          })
+          console.log(map2.join(''))
+        // forEach2
+        Array.prototype.forEach2=function(callback){
+            
+        //  for(var i=0;i<this.length;i++)
+        for(var i in this) {
+            
+             if(this.hasOwnProperty(i)){//note đoạn ni (để qua index của những phương thức thuộc --proto---)
+                 callback(this[i],i) 
+             }                  
+         }  
+        }
+        courses.forEach2(function(course,index){
+          console.log(index,course)
+        })
+        // filter2
+        Array.prototype.filter2= function(callback){
+            var result=[]
+        //   for(var i=0; i<this.length;i++)
+        for(var index in this)
+          {
+              if(this.hasOwnProperty(index)){
+
+                  var output =callback(this[index],index)
+                  if(output)
+                  result.push(this[index])
+              }
+          }
+          return result
+        }
+        var filter2= courses.filter2(function(course,index){
+         return course.includes('J')===true
+        })
+        console.log(filter2)
+        //some2
+        Array.prototype.some2=function(callback){
+        // for(var i=0; i<this.length;i++)
+        for (var i in this)
+        {   
+            if(this.hasOwnProperty(i)){
+                var output=callback(this[i],i)
+                if(output){
+                    return true
+                }         
+            }
+        }
+        return false
+        }
+
+        var some2= courses.some2(function(course, index){
+         return course.includes('J')===true
+        })
+        console.log(some2)
+        //every
+        Array.prototype.every2=function(callback){
+            // for(var i=0;i<this.length;i++)
+            for(var i in this)
+            {   
+                if(this.hasOwnProperty(i)){
+                    var output=callback(this[i],i)
+                    if(!output){
+                        output=false
+                        break
+                }
+                }
+            }
+            return output
+        }
+        var every2= courses.every2(function(course, index){
+            return course.includes('J')===true
+        })
+        console.log(every2)
+
+        // empty element array
+        // dùng vòng lặp for-in để lặp những phần tử tồn tại trong array , k lặp qua phần tử trỗng 
+        // for-in nó duyệt qa lun phương thức nằm trong --proto-- (phương thức tự định nghĩa)
+        // hasOwnPrototype(index)--> kiểm tra những phần tử thuộc mảng và bỏ qua phương thức thuộc --proto---
+        var array2=new Array(10) //array2 có độ dài bằng 10
+        var array2=new Array(10,11) //array2 có 2 phần tử 10 và 11
+
+
+
+    </script>
+</body>
+</html> 

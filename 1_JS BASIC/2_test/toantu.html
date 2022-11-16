@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //tiền tố , hậu tố
+        var a=9
+        // var number=++a
+        // /**
+        //  * Việc 1: +1 cho a, a=a+1;
+        //  * Việc 2: Trả về a sau khi được +1
+        //  */
+        // console.log('number',number)// trả về 10
+        var b=a++
+        /**
+         * Việc 1: 'copy a','a copy=9'
+         * Việc 2: a cộng cho 1, a=a+1
+         * Việc 3: Trả về 'a copy'
+         */
+        console.log('b',b)//trả về 9
+        // Lưu ý có cả var number=++a trước đến var b=a++; thì b sẽ nhận giá trị 'a copy=10 vì a đã đk cộng 1 ở đoạn number'
+        //Toán tử nối chuỗi
+        var firtname="Trang"
+        var lastname="Trương"
+       
+        console.log(firtname+" "+lastname)
+        firtname+=' Trang cute'
+        console.log(firtname)
+
+        var myObject={
+            name1: "TRANG"
+
+        }
+        console.log(myObject['name1'])
+        console.log(typeof myObject)
+        var isNull=null
+        console.log(typeof isNull)// NOTE trả về Object
+        var myArray =['a','b','c']
+        console.log(typeof myArray)//object
+        // toán tử logic
+        var a=1;
+        var b=2;
+        var result= a<b && a<0
+        console.log(result)
+        var ss='a'&&'b'&&'c'
+        console.log(ss)//trả về 'c'
+        /**
+         * Toán tử logic && đọc từ trái sang phải theo từng giá trị, nếu gặp 1 trong 6 giá trị False thì sẽ trả về giá trị đó, còn khác thì sẽ trả về giá trị cuối cùng bên phải gán vào biến
+        */
+        var logic ='s'&&'d'&& null
+        console.log(logic)// trả về null
+        var logi ='s'||'d'|| null
+        console.log(logi)// trả về s
+
+    </script>
+</body>
+</html>

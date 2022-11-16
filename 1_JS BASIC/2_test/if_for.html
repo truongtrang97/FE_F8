@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<sc>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // if sử dụng để ss đúng or sai
+     var dat=1
+     if(dat>0){
+         console.log('ok')
+     } else if(dat<0){
+         console.log('none')
+     }
+    //  switch case:
+    // gặp case đúng sẽ chạy all các trường hợp phía sau( chạy hết tất cả các case còn lại phía saui kể cả case sai)
+    // gặp break sẽ switch case
+    // swith case sử dụng trong trường hợp cho giá trị so sánh và nhiều trường hợp so sánh
+    //  số lượng case >3
+    switch (dat){
+        case 2: console.log('log 1')
+                break
+        case 1: console.log('log 2')
+        case 3: console.log('log 3')
+        break
+        case 4: console.log('log 2')
+        break
+    }
+    
+    // ---- toán tử 3 ngôi---
+    var a='đúng'
+    var b='sai'
+    var c=a==='đúng'? a:b
+    console.log(c)
+
+    // ----Vòng lặp (loop)----
+    /**
+     * for: lặp với điều kiện đúng
+     * for-in: lặp qua key của đổi tượng
+     * for-of: lặp qua value của đối tượng
+     * while: lặp khi điều kiện đúng
+     * do/while: lặp ít nhất 1 lần, sau đó lặp khi điều kiện đúng
+     */
+     
+    //  for-loop
+    for(var i=1; i<=10;i++){
+        console.log(i)
+    }
+    //  i=1 chạy 1 lần duy nhất, sau kiểm tra điều kiện đúng sẽ thực hiện lệnh, xong tăng lên -> rùi kiểm tra tiếp điều kiện
+    //  lưu ý có thể thiếu 1 trong 3 vê,
+    // nếu điều kiện 2 vô hạn vòng for sẽ chạy không ngừng làm treo trình duyệt
+    // trường hợp điều kiện là true, để trống, hoặc > 1 số nào đó
+    // điều kiện thứ 3 tăng giá trị phải có(có thể viết phía dưới lệnh)
+    // ---ứng dụng vòng lặp for lấy ra phần tử mảng---
+    var myarray=['a','js','php']
+    for(var i=0;i<myarray.length;i++){
+        console.log(myarray[i])
+    }
+    //lưu ý: đăt biến array.length ở ngoài để sau mỗi lần lặp không tính lại length của array, nó làm giảm hiệu năng
+    // ---vòng lặp for/in---
+    var myInf={
+        name:'trang',
+        age: 18,
+        email:'tranghaha.com'
+    }
+    for(var key in myInf){
+        console.log(key) // lấy ra key dưới dạng chuỗi
+
+        console.log(myInf[key])// lấy ra value
+    }
+    // mỗi lần chạy sẽ lấy các giá trị key của object gán vào key dưới dạng chuỗi
+    //  tương tự với mảng và string đều lấy được key và value
+    var mystring='Javascript'
+    for(var key in mystring){
+        console.log(key)
+        console.log(mystring[key])
+    }
+    var array1=['read','trang',123]
+    for (var key in array1){
+        console.log(key)
+        console.log(array1[key])
+    }
+
+    // ---vòng lặp for/of---+ note chỉ áp dụng lấy được giá trị cho string và array . 
+    for(var value of mystring){
+        console.log(value)
+    }
+    for(var value of array1){
+        console.log(value)
+    }
+
+    //  đối với object
+    console.log(Object.keys(myInf))// log ra được key của object được đưa vào 1 mảng ["name", "age", "email"]
+    for (var value of Object.keys(myInf)){
+        console.log(myInf[value])
+    }
+    // ---While---
+    var i=0;
+    while(i < array1.length){
+     console.log(array1[i])
+     i++
+    }
+    //-- vòng lặp do/while---
+    var a=0
+    do{
+        a++
+        console.log(a)
+    }
+    while(a<10)
+    // do/while kiểm tra điều kiện từ lần lặp thứ 2 (dù lúc đầu đúng hay sai vẫn chạy 1 lần)
+    // ứng dụng nạp thẻ cào
+    var i=0
+    var issuccess= false
+    do{
+        i++
+        console.log('lần cào thứ' + i)
+        if(false){
+            issuccess=true
+        }
+    }
+    while(!issuccess && i<3)
+
+
+    // ---break và continue in loop 
+    // break để thoát khỏi vòng lặp 
+    //  continue bỏ qua 1 vài lần lặp của vòng lặp
+
+    for(var i=0; i<10 ;i++){
+        console.log(i)
+
+        if(i>=5){
+            break
+        }
+    }
+
+    //  loại bỏ tất cả số lẻ chỉ in ra số chẵn
+    for(var i=0; i<10 ;i++){
+
+        if(i%2 !==0){
+            continue
+        }//thỏa mãn điều kiện sẽ quay lên tăng i và k log ra, không thỏa mãn mới log ra
+        console.log(i)
+    }
+    // vòng lặp lồng nhau (nested loop)
+    var array2 =[[1,2],[3,4],[5,6]]
+     for(var i=0;i<array2.length;i++){
+         for(var j=0 ; j<array2[i].length;j++){
+             console.log(array2[i][j])
+         }
+     }
+
+
+    </script>
+</body>
+</html>
