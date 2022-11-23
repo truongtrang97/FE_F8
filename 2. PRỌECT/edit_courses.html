@@ -22,11 +22,10 @@
         <button id="create">Create</button>
     </div>
     <script>
-        var render_course=document.querySelector('#course');
         var course_api= 'http://localhost:3000/courses'
-
         function start(){
             getcourse(function(courses){
+                console.log("course:", courses)
                 rendercourse(courses)
             })
             
@@ -61,18 +60,18 @@
             .then(callback)
         }
         
-        
-        
         function rendercourse(courses){
-        var render_course=document.querySelector('#course');
-        var html=courses.map(course=>{
-            return `<li>
-                <h4> ${course.title} </h4>
-                  <p>${course.decription}</p>
-                   </li>`
-        })
-         
-        render_course.innerHTML= html.join('')
+            var render_course=document.querySelector('#course');
+            console.log("courses 2:", courses)
+            console.log("render_course:", render_course)
+            
+            var html=courses.map(course=>{
+                return `<li>
+                    <h4> ${course.title} </h4>
+                    <p>${course.description}</p>
+                    </li>`
+            })
+            render_course.innerHTML= html.join('')
         }
 
         function handlecreatevalue(){
@@ -81,17 +80,18 @@
              var name =document.querySelector('input[name="name"]').value
              var description=document.querySelector('input[name="description"]').value
              var data_course={
-                 name: name,
+                 title: name,
                  description: description
 
              }
             
            createCourse(data_course, function(){
-            getcourse(rendercourse)
-            
+            getcourse(rendercourse)      
            })
         }
     }
+        
+    
         start()
 
     </script>

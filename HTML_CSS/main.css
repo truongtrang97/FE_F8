@@ -1,0 +1,11 @@
+/* css external */
+/* sử dụng biến trong css */
+:root{
+    --primary-color: rgb(62, 211, 16);
+;
+}
+
+.head1{
+    color: var(--primary-color);
+}
+

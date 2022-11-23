@@ -2,78 +2,28 @@
   "courses": [
     {
       "title": "HTML CSS",
-      "decription": "Trong khóa này chúng ta sẽ cùng nhau xây dựng giao diện 2 trang web là The Band & Shopee.\n",
+      "description": "Trong khóa này chúng ta sẽ cùng nhau xây dựng giao diện 2 trang web là The Band & Shopee.\n",
       "id": 1
     },
     {
       "title": "Lập Trình JavaScript Cơ Bản\n",
-      "decription": "Học Javascript cơ bản phù hợp cho người chưa từng học lập trình. Với hơn 100 bài học và có bài tập thực hành sau mỗi bài học\n",
+      "description": "Học Javascript cơ bản phù hợp cho người chưa từng học lập trình. Với hơn 100 bài học và có bài tập thực hành sau mỗi bài học\n",
       "id": 2
     },
     {
       "title": "Xây DựnG\n",
-      "decription": "Khóa học ReactJS từ cơ bản tới nâng cao, kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS. Cuối khóa học này bạn sẽ sở hữu một dự án giống Tiktok.com, bạn có thể tự tin đi xin việc khi nắm chắc các kiến thức được chia sẻ trong khóa học này.\n",
+      "description": "Khóa học ReactJS từ cơ bản tới nâng cao, kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS. Cuối khóa học này bạn sẽ sở hữu một dự án giống Tiktok.com, bạn có thể tự tin đi xin việc khi nắm chắc các kiến thức được chia sẻ trong khóa học này.\n",
       "id": 3
     },
     {
       "title": "Xây Dựng Website với ReactJS\n",
-      "decription": "Khóa học ReactJS từ cơ bản tới nâng cao, kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS. Cuối khóa học này bạn sẽ sở hữu một dự án giống Tiktok.com, bạn có thể tự tin đi xin việc khi nắm chắc các kiến thức được chia sẻ trong khóa học này.\n",
+      "description": "Khóa học ReactJS từ cơ bản tới nâng cao, kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS. Cuối khóa học này bạn sẽ sở hữu một dự án giống Tiktok.com, bạn có thể tự tin đi xin việc khi nắm chắc các kiến thức được chia sẻ trong khóa học này.\n",
       "id": 4
     },
     {
-      "name": {},
-      "description": {},
+      "title": "adfaf",
+      "description": "ádfadsklfj",
       "id": 5
-    },
-    {
-      "name": {},
-      "description": {},
-      "id": 6
-    },
-    {
-      "name": {},
-      "description": {},
-      "id": 7
-    },
-    {
-      "name": {},
-      "description": {},
-      "id": 8
-    },
-    {
-      "name": {},
-      "description": {},
-      "id": 9
-    },
-    {
-      "name": {},
-      "description": {},
-      "id": 10
-    },
-    {
-      "name": {},
-      "description": {},
-      "id": 11
-    },
-    {
-      "name": "xcxvx",
-      "description": "vxcbxb",
-      "id": 12
-    },
-    {
-      "name": "gjhgj",
-      "description": "ghfhf",
-      "id": 13
-    },
-    {
-      "name": "n,mbnm,",
-      "description": "Lê Trúc Mộc",
-      "id": 14
-    },
-    {
-      "name": "nvnvn",
-      "description": "Lê Trúc Mộc",
-      "id": 15
     }
   ]
 }
