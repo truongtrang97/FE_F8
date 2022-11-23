@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Optional chaining (?.)
+        // sử dụng khi không chắc chắn key đó có tồn tại hay không
+
+        var obj={
+            name:'htp',
+            getName(value){
+                return value
+            },
+            cat: {
+                name:2,
+                cat1:{
+                    name:3,
+                    cat2:{
+                        name:4,
+                    }
+                }
+            }
+        }
+        console.log(obj.getName?.(123))
+        // obj.getName?.(123);
+        console.log(obj.cat.cat1.cat2.name)
+        if(
+        //     obj.cat &&
+        //    obj.cat.cat1&&
+        //    obj.cat.cat1.cat2
+        // Dùng optional chaining(?.)
+        obj?.cat?.cat1?.cat2?.name)
+           {
+          console.log(obj.cat.cat1.cat2.name)
+           }
+        // tìm hiểu mozilla
+
+    </script>
+</body>
+</html>

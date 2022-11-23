@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function arrow viết tắt
+        var a=(n)=>{
+            return('123')//pải có return trong {}
+        }
+        a()
+
+        var b=(m)=>({name:'TRang'})//riêng object phải có dấu ()
+        b()
+
+        var c=(k)=>k   //sau => giá trị gì thì sẽ return ra giá trị đó
+
+        /**
+         * Lưu ý: arrow function không dùng viết function là key trong object
+         *  không dùng arrow function để viết function contructor
+         * 
+         */
+
+        //  TEMPLATE LITERALS
+
+        var option=`Templatestring nội suy với \${}`
+        console.log(option)
+        
+        var ab=`trangtruong\n`+`b\n`
+
+        console.log(ab)
+
+         // ----CLASSES----
+        //  Trong ES6 classes là cách viết khác của contructor function
+
+        function Course(name,price){
+            this.name=name;
+            this.price=price;
+            this.getName= function(){
+                return this.name
+            }
+        }
+
+        const A=new Course('js',100)
+        const B=new Course('PHP',100)
+        
+        console.log(A)
+        console.log(B)
+       
+        // ưu điểm của class chia ra thành nhiều từng phần rõ ràng khi code lớn thì dễ xử lý
+        class Courses{
+            constructor(name, price){
+                this.name=name;
+                this.price=price;
+            }
+            getName(){
+                return this.name
+            }
+            getPrice(){
+                return this.price
+            }
+            run(){
+                const isSuccess=false
+            }
+        }
+
+        // ----Enhanced object literal---
+        /**
+         * Giúp định nghĩa key, value trong object ngắn gọn hơn 
+         * Định nghĩa method cho object
+         * Định nghĩa key cho object dưới dạng biến
+         */
+        var key1='name1'
+        var key2='name2'
+
+    var ob12={
+        key1,
+        key2, 
+        getName(){
+            return key1;
+        }
+    }
+    console.log(ob12)
+    // {key1: "name1", key2: "name2"}
+    //đinh nghĩa key, value ngắn gọn
+
+    console.log(ob12.getName())
+
+    var keyword='price'
+    var keyname="name"
+    var ob2={
+        [keyword]: 1000,
+        [keyname]:'trang'
+    }
+
+    console.log(ob2)
+
+    //  ------Default parameter values: ĐỊNH NGHĨA NHỮNG GIÁ TRỊ MẶC ĐỊNH CỦA THAM SỐ----
+    // Có những hàm định nghĩa ra có những tham số không bắt buộc nhập thì dùng default value
+    //  những tham số bắt đầu bằng chữ is__ có dạng boolean 
+
+    function logger(log, type=log){//khi không truyền giá trị type thì nó lấy giá trị mặc định là log
+        console[type](log)
+    }
+    logger('abc','log')
+    logger('abc','warn')
+    
+
+
+
+
+
+
+    </script>
+</body>
+</html>

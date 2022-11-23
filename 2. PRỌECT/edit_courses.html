@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Danh sách khóa học</h2>
+        <ul id="course">
+        </ul>
+        
+        <label>Name</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <br>
+        <label>Description</label>
+        <input type="text" name="description" id="description">
+        <br>
+        <button id="create">Create</button>
+    </div>
+    <script>
+        var render_course=document.querySelector('#course');
+        var course_api= 'http://localhost:3000/courses'
+
+        function start(){
+            getcourse(function(courses){
+                rendercourse(courses)
+            })
+            
+            handlecreatevalue()
+        }
+
+        function getcourse(callback){
+            fetch(course_api)
+            .then(function(response){
+                return response.json()
+            })
+            // .then(function(course){
+            //     console.log(course)
+            // })
+            .then(callback)
+        }
+
+        function createCourse(data,callback){
+            //tạo mới dữ liệu với phương thức post của fetch
+            var object1 = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }
+            
+            fetch(course_api,object1)
+            .then(function(response){
+                return response.json()
+            })
+            .then(callback)
+        }
+        
+        
+        
+        function rendercourse(courses){
+        var render_course=document.querySelector('#course');
+        var html=courses.map(course=>{
+            return `<li>
+                <h4> ${course.title} </h4>
+                  <p>${course.decription}</p>
+                   </li>`
+        })
+         
+        render_course.innerHTML= html.join('')
+        }
+
+        function handlecreatevalue(){
+         var createbutton=document.querySelector('#create')
+         createbutton.onclick= function(){
+             var name =document.querySelector('input[name="name"]').value
+             var description=document.querySelector('input[name="description"]').value
+             var data_course={
+                 name: name,
+                 description: description
+
+             }
+            
+           createCourse(data_course, function(){
+            getcourse(rendercourse)
+            
+           })
+        }
+    }
+        start()
+
+    </script>
+</body>
+</html>

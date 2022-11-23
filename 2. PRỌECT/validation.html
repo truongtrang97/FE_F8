@@ -55,15 +55,16 @@
             form:'#form-1',
             rules:[
                 Validation.isRequired('#fullname'),//phải bắt buộc
+                Validation.isRequired('#email'),
                 Validation.isEmail('#email'),//phải là email
+                Validation.isRequired('#password'),
                 Validation.minLength('#password',6),
+                Validation.isRequired('#password-confirmation'),
                 Validation.confirmpassword('#password-confirmation',function Cofirmed(){
                     return document.querySelector('.form-group #password').value
                 },'Mật khẩu không khớp, vui lòng nhập lại')
 
             ]
-            
-
         })
     </script>
 </body>

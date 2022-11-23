@@ -2,18 +2,21 @@
 // option ni là object ---> option.form = '#form-1'
 function Validation(options){
            
-  var seclectorRule = {}
+  var seclectorRule = {}// sau vòng lặp chạy sẽ lưu hết tất cả những rule vào {} ni
     // console.log(options.form)
    function validation(rule,inputElement){
             var errorElement =inputElement.parentElement.querySelector('.form-message')
-            console.log(errorElement)
-            var errorMessage = rule.test(inputElement.value) //đoạn ni viết trong function, ngoài k k dk???
-            var rules=seclectorRule[rule.selector]
-            for(var i=0; i<rules.length;i++){
-             
-              
+            // var errorMessage = rule.test(inputElement.value) //đoạn ni viết trong function, ngoài k k dk???
+            var errorMessage
+            // lấy ra các rules của seclector
+            var rules = seclectorRule[rule.selector]
+            // lặp qua từng rule và check
+            // nếu 2 rule của email, khi rule đầu có lỗi sẽ dừng lại không kiểm tra rule tiếp theo
+            for(var i = 0;i<rules.length;i++){
+               errorMessage=rules[i](inputElement.value)
+               if(errorMessage){ break}
             }
-
+            // xem lại đoạn rules ni
             if(errorMessage){
             // console.log(errorMessage)
             errorElement.innerText = errorMessage    
@@ -25,16 +28,35 @@ function Validation(options){
             inputElement.parentElement.classList.remove('invalid')                                  
             }                 
    }
-
+//  lấy element của form cần validate
   var formElement = document.querySelector(options.form)
-  console.log(options.rules)
+  
   if(formElement){
+
+    //  bỏ qua hành vi mặc định khi submit form
+     formElement.onsubmit =function(e){
+       e.preventDefault()
+     
+    // lặp qua từng rule và validate
+    options.rules.forEach(function(rule){
+      var inputElement =formElement.querySelector(rule.selector)
+       validation(rule,inputElement)//rule.selector = id của input--> lấy ra từng element của mỗi input ứng với id
+    })
+
+  }
+
+    //lặp qua mỗi rule và xử lý(lắng nghe sự kiện  blur, input)
       options.rules.forEach(function(rule){
-      var inputElement =formElement.querySelector(rule.selector)//rule.selector = id của input--> lấy ra từng element của mỗi input ứng với id
-      console.log(rule.selector)
-      var inputElement =formElement.querySelector(rule.selector)//rule.selector = id của input--> lấy ra từng element của mỗi input ứng với id
-      console.log(inputElement)
-      
+        var inputElement =formElement.querySelector(rule.selector)
+      //lưu lại các rule sau mỗi input--> nếu là undefined thì sẽ gán thành 1 cái mảng
+      if(Array.isArray(seclectorRule[rule.selector])){
+                seclectorRule[rule.selector].push(rule.test)
+      }
+      else{
+        seclectorRule[rule.selector]=[rule.test]
+      }
+      // seclectorRule[rule]=[rule.test]
+
       
       if(inputElement){
             //  value của input : inputElement.value
@@ -45,8 +67,10 @@ function Validation(options){
           }
       }
       )
+      console.log(seclectorRule)
+    
     }
-    }
+  }
 
 // Định nghĩa về rules:
 // Nguyên tắc về rules
@@ -54,6 +78,10 @@ function Validation(options){
 // 2. Khi hợp lệ-> không trả cái gì cả (undefined)
 
 // 2. tạo 2 phương thức isRequired() và isEmail()
+
+
+
+
 
 Validation.isRequired= function(selector){
   return {

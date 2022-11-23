@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * let & const sinh ra ở ES6 , thay thế var ---khai báo biến
+         * hiện tại tất cả trình duyệt chưa support hết được ES6 ==> nên chưa thay thế hoàn toàn var dk
+         * 
+         * Khác nhau giữa var/let, const
+         * 1.scope: phạm vi truy cập
+         * 2. Hosting : đưa lên trên 
+         * 3. Const/var-let: Assignment -> khác nhau về việc gán giá trị lại cho biến
+         * 
+         * 
+         * code block: if(),loop,{}
+         */
+        {
+            const a=123
+            {
+                console.log(a)//123
+                {
+                    const a=1
+                    console.log(a)//ưu tiên con --1
+                }
+            }
+        }
+
+        // hosting chỉ có var được, còn let, const không hosting được
+        b=4656
+
+        // var b
+        console.log (b)
+
+        // let và var có tính chất có thể gán lại giá tị còn const thì không
+        
+        let m=1
+        m=19
+        console.log(m)
+
+
+        // note không gán lại giá trị trực tiếp cho const nhưng có thể gán lại thuộc tính của const
+
+        var n={name:'JS'}
+        
+        n.name='php'
+
+        console.log(n.name)//php _cái ni là gán lại thuộc tính
+
+        //var : dùng khi code thuần
+        // let, const : dùng khi có babel
+        
+    
+    </script>
+</body>
+</html>

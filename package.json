@@ -1,0 +1,23 @@
+{
+  "name": "fe_f8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"json-server --watch course.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truongtrang97/FE_F8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truongtrang97/FE_F8/issues"
+  },
+  "homepage": "https://github.com/truongtrang97/FE_F8#readme",
+  "dependencies": {
+    "json-server": "^0.17.1"
+  }
+}

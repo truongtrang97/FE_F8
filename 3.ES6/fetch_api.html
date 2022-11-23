@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="port"></ul>
+    <script>
+        /**
+         * FE: Nội dung bố cục ntn do FE quyết định
+         * back-end: Xây dựng logic (xử lý, lưu trữ dữ liệu là chủ yếu) vd: chữ trên web viết ntn và lưu ở đâu LÀ DO BE
+         * + Cơ sở dữ liệu
+         * 
+         * API :Application programing interface __ Giao diện lập trình ứng dụng
+         * Hiểu đơn giản là cổng giao tiếp giữa các phần mềm
+         * (api: ni là BE cấp 1 url và trả về dữ liệu cho PE nhận và hiển thị ra cho người dùng )
+         * 
+         * BE-->API-->FETCH(gọi lên API để lấy dữ liệu )-> nhận dữ liệu là JSON (có thể trả về XML hoặc 1 kiểu dữ liệu khác )
+         * Sau đó dùng JSON.parse ---> nhận về Javascript types
+         * Xử lý rồi sau đó render ra giao diện với HTML 
+         * 
+         * Tham khảo: https://jsonplaceholder.typicode.com/
+         * 
+         * TÚM LẠI PẢI BIẾT GỌI API LÊN VÀ BIẾT CÁCH XỬ LÝ 
+         * 
+         * Fetch ni sử dụng promise 
+         * Nó là hàm được dựng sẵn , tuy nhiên khi gọi đến hàm fetch sẽ nhận được 1 promise nó return lại
+         * 
+         * có mã status :200; lấy thành công
+         * 
+         */
+
+        //  Cách gọi API
+
+        var postAPI = 'https://jsonplaceholder.typicode.com/posts'
+        fetch (postAPI)
+        .then(function(response){//response ni là 1 promise
+            return response.json(); //cái ni là 1 promise
+            //  (cái ni nó parse lun response trả về ) JSON.parse ->Javascript type
+        })
+        .then(function(ports){
+            // console.log(port)
+            var htmls= ports.map(function(port){
+                return `<li>
+                    <h2>${port.title}</h2>
+                    <p>${port.body}</p>                  
+                        </li>`
+            })
+           
+            var html =document.querySelector('#port')
+            html.innerHTML = htmls.join()
+        })
+      
+        .catch(function(err){//khi gọi không thành công
+            console.log('có lỗi')
+        })
+
+        // ===JSON SERVER===
+        // fake
+        // API server__Json server
+        // tham khảo: https://github.com/typicode/json-server
+        // open source: mã nguồn mở
+
+        // cài nodejs :
+        // khi cài bằng npm install -g json-server (có -g nó sẽ cài thẳng lên máy tính luôn)
+        // Bỏ -g nó sẽ cài lên thư mục thâu
+        //  cài xong 2, thêm lệnh <npm init> để khởi tạo 1 project lại (enter liên tục k care nội dung)--> tạo ra thue mục package.json
+        // package.json : file quản lý những thư mục mình tải xuống
+        // cài <json server> bằng lệnh : npm install -g json-server
+        // tạo ra thư mục db.json và điền nội dụng API cần vào
+        // ==Start JSON Server==
+        // Trong file :package.json 
+        //  Thêm vào: "scripts": {
+        // "start":"json-server --watch db.json",
+
+        // ===Sử dụng Postman làm việc với REST API====()
+        //ghép giao diện với API
+        // API server (fake) còn gọi là mock api
+
+        //  4 hành động thao tác với dữ liệu viết tắt là CRUD
+        //  - Create: tạo mới -->POST
+        //  - Read: Lấy dữ liệu về -->GET
+        //  - Update: Cập nhật chỉnh sửa-->PUT/PATCH
+        //  - Delete: xóa -->DETELE
+        //   Khi truy cập qua website những dữ liệu được truyền tải qua internet, hầu hết đi qua giao thức HTTP 
+        // HTTP protoco : có những phương thức chính :
+        //  POST-GET-PUT/PATCH-DETELE
+
+
+        // Phần mềm Postman để test dữ liệu 
+        // REST API : Định nghĩa rõ ràng những hành động dựa trên phương thức của giao thức http  
+        
+
+
+
+    </script>
+</body>
+</html>

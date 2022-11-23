@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ----Destructuring----- phân rã
+        // Áp dụng cho object và array
+        var ob1=['js','php','react']
+        var [a,b,c]=ob1 //note có từ var trước nha
+        console.log(a)//js
+        console.log(b)//php
+        console.log(c)//react
+        var[a,,c]=ob1 
+        console.log(a,c)//js,react
+
+        var[b]=ob1
+        console.log(b)
+
+        // =====Rest parameters==== lấy ra tất cả các phần tử còn lại và đưa các giá trị vào 1 mảng
+        var[a,...rest]=ob1
+        console.log(rest)//["php", "react"]
+
+        var course={
+            name:'trang',
+            age:1,
+            adrresr:'usa',
+            chilren:{
+                name:'huhu'
+            }
+
+        }
+        var{name,age,adrresr,haha}=course
+        console.log(age)//1
+        console.log(haha)//key name không có sẽ có giá trị underfined
+        var{name,age,...rest}=course
+        console.log(rest)// {các phần tử còn lại đưa vào object}
+        var{name,chilren:{name}}=course
+        console.log(name)//huhu
+        // thay đổi tên
+        var{name:parentname,chilren:{name: chilrenname}}=course
+        console.log(parentname)
+        console.log(chilrenname)
+        // khi không có giá trị trong object ta gán cho nó 1 giá trị mặc định
+        var{name,price=100}=course
+        console.log(price)//1000_ trường có giá trị trong object nó sẽ lấy giá trị trong object
+
+        // NOTE: (...REST) LÀ toán tử rest khi nó kết hợp với destrusturing hoặc khi nó được định nghĩa ở tham số của function___các trường hợp còn lại là spread
+         function logger1(...params){
+         console.log(params)
+         }
+         logger1(1,2,3,4,5,6)
+
+         function logger2(a,b,...params){
+         console.log(params)
+         }
+         logger2(1,2,3,4,5,6)//[3, 4, 5, 6]
+         
+         //--object
+         function logger3({name,age,...rest}){
+             console.log(name)
+             console.log(age)
+             console.log(rest)
+             
+         }
+
+         logger3({
+             name:'vuong',
+             age: 12,
+             add:'home'
+         })
+
+         function logger4([a,b,...rest]){
+             console.log(a)
+             console.log(b)
+             console.log(rest)
+         }
+
+         logger4([5,6,7,8,9,10])
+
+
+        //  ===Spread=== toán tử giải : bỏ đi dấu ngoặc của array , object
+        //  sử dụng để nối mảng or hợp nhất 2 object lại với nhau
+        //  sử dụng khi truyền đối số của function
+
+        var array1=[1,2,3]
+        var array2 =[5,6,7]
+
+        var array3=[...array1,...array2]
+        console.log(array3)
+
+        var ob1={
+            name:'ha11',
+            add:'hainoi'
+        }
+        
+        var ob2={
+            name:'trang',
+            age:10
+        }
+        var ob3={...ob1,...ob2}
+        console.log(ob3)//{name: "trang", add: "hainoi", age: 10} : name sau đã ghi đè lên name trước
+
+        //  note : object có trùng key, trùng name thì key, name sẽ được lấy cái định nghĩa sau
+
+        var total=['js','php','AI','pythor']
+        function logg12(...rest){
+            console.log(rest)//["js", "php", "AI", "pythor"]
+            for(var i=0;i<rest.length;i++){
+                console.log(rest[i])
+            }
+        }
+        logg12(...total)
+
+        // =====Tagged template literals trong ES6 (ít người biết)=====
+        // (1 function)nối liền với cụm``
+
+        function hightlight(...rest){
+            console.log(rest)
+        }
+        
+        var course='F8'
+        var action='lập trình '
+
+       var html= hightlight`Học ${action} tại ${course}`
+       console.log(html) //[array1,'F8','lập trình'], array1=[Học,tại,""]
+
+       function hightlight2([first,...string1],...value){
+            console.log('first',first)//Học
+             console.log('string1',string1)//['tại',""]
+            console.log('value',value)  //["React","F8"]  
+            return value.reduce((acc,cur)=>[...acc,`<span>${cur}</span>`,string1.shift()],[first]).join('')       
+        }
+        
+        var course2='React'
+        var action2='F8 '
+        
+        var html2= hightlight2`Học ${course2} tại ${action2}`
+        console.log(html2)
+
+
+
+
+    </script> 
+</body>
+</html>

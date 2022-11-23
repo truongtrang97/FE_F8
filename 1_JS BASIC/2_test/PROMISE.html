@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * Promise: cần phải hiểu 2 khái niệm
+         * sync: đồng bộ (vd code nào viết trước chạy trước)
+         * async: bất đồng bộ
+         * Nổi đau
+         * Lý thuyết và cách hoạt động
+         * 
+         */
+        
+        //  vd bất đồng bộ:
+        //  một số hàm khi sử dụng trong Javascript sẽ là bất đồng bộ:
+        // 1. setTimeout, setInterval, fetch, XMLHttpRequest, đọc file, request animation frame
+        //  pải dùng callback để xử lý những cái bất đồng bộ
+        setTimeout(function(){
+            // console.log(1)
+        },1000)
+        console.log(2)
+        // promise để giải quyết 2 vấn đề này:
+        // 1. callback hell : callback lồng callback (khi những dữ liệu ràng buộc với nhau)
+        // 2. Pyramid of doom
+
+        // ----Lý thuyết và cách hoạt động của promise 
+        /**
+         * B1: Khởi tạo promise
+         * B2: Viết function executor
+         * + luôn gọi 1 trong 2 resolve or reject : nếu không gọi thì promise sẽ bị treo dẫn đến memory leak
+         */
+
+        var promise = new Promise(//là 1 object contructor_
+            // Executor
+            function( resolve,reject){//hỉu cái ni là thành công và thất bại 
+                    // function ni được thực thi khi gọi đến new Promise, nó được thực thi trước khi promise nhận đối tượng
+
+                    // Fake call API
+                    resolve()//truyền vào đối số nào thì dưới phương thức 1 catch sẽ trả về đối số đó
+            // logic
+            // thành công: resolve()
+            // thất bại: reject()
+            }
+        ) 
+
+        // promise có 3 phương thức: được truyền đối số là 1 callback
+        // promise có 3 trạng thái
+        // 1.pendding: đang chờ 
+        // 2.fullfilled: thành công 
+        // 3.reject: thất bại
+
+        //  cái ni hoạt động theo tính chất chuỗi thẳng đứng--> ông sau cần value của ông trước để thực thi
+        //  ông sau có thể nhận value của ông trước dưới dạng chuỗi
+        //  kết quả .then 1 return ra gì sẽ là đối số của then thứ 2...
+        promise
+        .then(function(){
+           return new Promise(function(resolve){
+           setTimeout(
+               function(){
+               resolve({hello:'name'})
+            },3000)
+        })
+        })
+        
+        //nếu function ni không return ra promise thì chạy ngay .then thứ 2
+        //  Trường hợp nếu là promise thì chờ promise đó giải quyết xong sẽ .then thứ 2 cho promise đó (k pải promise gốc)??
+        .then(function(data){
+            console.log (data)
+            return {name:'hello'};
+        })
+        .then(function(a){
+            console.log (a)
+            return 5;
+        })
+        
+        .catch(function(){
+            console.log('Failure')
+        })
+        .finally(function(){
+            console.log('Done')
+        })
+        // CÂU HỎI PHỎNG VẤN Promise
+        //Ý nghĩa: promise sinh ra để giải quyết những thao tác bất đồng bộ
+        // trước khi có promise ta sử dụng callback 
+        // + callback xảy ra vấn đề callback hell -->code bị sâu vào khó hỉu, bị rối
+        /**
+         * để tạo ra 1 promise dùng từ khóa new tạo ra 1 contructor function
+         * truyền vào 1 executor function (function thực thi)
+         * khi executor function thực thi sẽ nhận 2 tham số là 2 function resolve và reject
+         * resolve sẽ gọi khi thao tác xử lý của ta thành công
+         * reject sẽ gọi khi thao tác xử lý của ta thất bại
+         * khi ta sử dụng promise đối tượng promise được tạo ra những phương thức .then or .catch 
+         * khi promise bị resole sẽ lọt vào .then
+         * khi promise bị reject sẽ lọt vào .catch
+         */
+
+
+         function sleep(ms){
+            return new Promise(function(resolve){
+                setTimeout(resolve,ms)
+            })
+         }
+         sleep(1000)
+         .then(function(){
+             console.log(1)
+             return sleep(1000)//đã là 1 promise
+         })
+         .then(function(){
+             console.log(2)
+             return sleep(1000)
+         })
+         .then(function(){
+             console.log(3)
+             
+         })
+
+        //  promise hoạt dộng theo chuỗi , nếu giữa chừng có reject thì nó dừng lại không chạy tiếp .then() nữa, nó sẽ chuyển qua .catch
+        
+        /** promise method
+         * 1.Promise.resolve()
+         * 2.Promise.reject
+         * 3.Promise.all
+         * Có một số thư viện ==>output luôn luôn là promise
+         * 
+         */
+    
+        var testpromise1= Promise.resolve('abc')
+        testpromise1
+        .then(function(a){
+            console.log ('test1',a)
+            return Promise.reject('failure')
+        })
+        .catch(function(b){
+            console.log(b)
+        })
+
+        // Khi cần kết quả của 2 promise để thực hiện việc khác ta dùng Promise.all
+         
+        var promise1= new Promise(function(resolve){
+           setTimeout(function(){
+               resolve([1,4,5])
+           },1000)
+        })
+
+        var promise2= new Promise(function (resolve){
+            setTimeout(function(){
+                resolve([6,7,8,9])
+            },2000)
+        })
+
+        Promise.all([promise1,promise2])//note : cái ni truyền đối số phải đưa vào mảng
+        .then(function([result1,result2]){
+            console.log(result1.concat(result2))
+        })
+
+    </script>
+</body>
+</html>
