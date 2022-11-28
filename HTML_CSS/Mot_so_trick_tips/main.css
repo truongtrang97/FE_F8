@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.box{
+  width:100%;
+  height: 100px;
+  background-color: aqua;
+  font-size: 20px;
+  display:flex;
+   
+}
+h1{
+   margin: auto; 
+   position:relative
+}
+h1::after{
+    content:"";
+    position:absolute;
+    left: -10px;
+    border-left: 5px solid red;
+    height: 30px;
+    top:50%;
+    transform: translateY(-50%);
+    
+}
+
+/* Các canh giữa 1 item nằm trong box */
+/* text-align: có tính chất thừa kế, có thể đưa vào cả thẻ cha, con vẫn được thừa kế */
+
+/* cách 1: */
+/* 
+ text-align: center;
+    /* canh ra giữa theo chiều ngang*/
+    /* line-height: 100px;(bằng chiều cao của thẻ cha)(note; nên đặt biến để khi thay đổi kích thước vẫn ok */
+    /* /* canh giữa theo chiều dọc 
+*/
+
+/* cách 2 : có thể canh nhiều item cùng lúc*/
+/* thẻ box: display : flex*/
+/* thẻ con: margin:auto */
+
+/* cách 3 */
+/* 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+*/
+
+/* cách 4 ___áp dụng những trường hợp canh giữa (vạch ngang nhỏ theo giữa chữ)*/
+/* thẻ cha: position:relative */
+/* thẻ con */
+/* 
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+*/

@@ -1,0 +1,47 @@
+.head{
+    width:100%;
+    height: 100vh;
+    background-image: 
+    /* url(data:image/jpeg;base64,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), */
+    url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSCAKQnwpGWHPf0tpiR3Hm4fQP_s0gAUNttY7nNvb_&s);
+    /* dùng nhiều hình ảnh , hình ảnh nào viết url trước sẽ hiển thị trước */
+    background-size: 100%;
+    /* chiều ngang fix , còn chiều dọc được auto & nó có thuộc tính repeat: lặp lại */
+    background-repeat: no-repeat;
+    border:20px dashed #cccc;
+    box-sizing: border-box;
+    background-origin:border-box;
+    /* mặc định là padding-box */
+    /* đổi lại đổ từ border-box vào */
+    /* chỉ đổ từ content-box thôi */
+}
+
+.head2{
+    width:100%;
+    height:100vh;
+    background-image: linear-gradient(180deg,rgba(56,89,150,0.3),rgba(13, 230, 24, 0.5)),
+    url(https://toigingiuvedep.vn/wp-content/uploads/2021/01/hinh-anh-cute-de-thuong-600x600.jpg);
+    /* tùy vào hướng điều chỉnh độ 180, 90, -90,-180 để có độ đậm lợt hợp lý */
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+}
+/* 
+## Background origin:
++ Quyết định đổ image từ đâu: border, padding, hay content của thẻ.
++ Đổ màu nền : background-color chỉ đổ được tới phần padding. Không đổ  được vào phần margin.
+*/
+
+/* 
+## Background position
++ Tùy chỉnh vị trí hình ảnh trong thẻ.
++ Syn: background-position: top right; Viết một giá trị thì gía trị thứ 2 mặc định là center. background-posotion: 50px - cách lề  trái 50 pixel, căn trên dưới center.
++ Kết hợp: background-position: top 20px right 20px: cách trên 20, phải 20. 
++ background-position: 20px 50px; (trục x, y)cách trái 20, cách trên 50.
+
++ sát bên phải và ở phía dưới: background-position: bottom right
+*/
+/* 
+cú pháp shorthand: của background-position: url() no-repeat /contain center
+*/

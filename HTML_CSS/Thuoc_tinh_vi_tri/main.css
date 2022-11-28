@@ -1,0 +1,63 @@
+#head1{
+    color: red;
+    position:relative;
+    font-size: 50px;
+    top:100px;
+    right:20px
+}
+/* css relative */
+/* có thuộc tính relative thì head1 sẽ duy chuyển độc lập không phụ thuộc vào ai cả, chồng lên bất cứ element nào */
+
+.box {
+width:100%;
+height:100px;
+background-color:red;
+position:fixed;
+bottom:0
+}
+
+.box-child {
+ width:100px;
+ height:50px;
+ background-color:green;
+ position:absolute;
+ top:0;
+ right:0
+}
+/* note : nếu css cả top bottom thì nó sẽ ưu tiên top */
+/* có cả right và left thì nó sẽ ưu tiên left */
+
+/* css position absolute */
+/* note: khi cần di chuyển 1 đối tượng con xung quanh  đối tượng cha thì sử dụng position: absolute */
+/* thẻ con có thuộc tính position: absolute, thì sẽ đi ra ngoài tìm thẻ cha gần nhất có thuộc tính position (không phân biệt thuộc tính position là gì) */
+/* Thì nó xem thẻ đó là thẻ cha của nó và lấy đó làm gốc tọa độ  */
+
+/* CSS position fixed */
+/* khi 1 đối tượng phụ thuộc vào cửa sổ trình duyệt sẽ là position: fixed */
+
+
+.box1
+{
+    width:100%;
+    height:50px;
+    background-color: rgb(0, 255, 42);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+ul{
+    height: 2000px;
+}
+
+/* CSS position sticky */
+/* ứng dụng vd cái ni di chuyển navbar từ giữa web đến trên top tự động dựng lại-- kiểu bám dính(hơi giông fixed_mà được ít trình duyệt support nên hạn chế dùng */
+
+ /* {
+    width: 100%;
+    height: 40px;
+    background-color: #000;
+    position: sticky;
+    position:-webkit-sticky;
+    top:0
+} */

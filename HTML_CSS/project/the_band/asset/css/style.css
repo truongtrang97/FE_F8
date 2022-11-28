@@ -1,0 +1,70 @@
+/* reset CSS */
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* Không cần tính toán khi padding và margin*/
+    
+}
+html{
+    font-family:Arial, Helvetica, sans-serif;
+    /* font chữ ni bỏ gạch chân */
+}
+
+#main{
+
+}
+
+#header{
+--heightheader:46px;
+ width:100%;
+ height:var(--heightheader);
+ background-color: #000;
+ top: 0;
+
+}
+
+#nav li {
+    display:inline-block; 
+    position: relative;
+    
+    
+}
+#nav >li>a{
+    color:#fff;
+}
+
+#nav li a{
+    text-decoration: none;
+    display:inline-block;
+    padding:0 24px;  
+    line-height:var(--heightheader);
+}
+#nav >li:hover >a{
+    /* hover vào li thì thẻ a con của li được hover */
+    color:#000;
+    background-color: #ccc;
+}
+
+#nav #subnav{
+    /* display:none; */
+    position:absolute;
+    top:var(--heightheader);
+    background-color: #fff;
+
+}
+ #nav #subnav li:hover a{
+    color:#000;
+    background-color: #ccc;
+ }
+
+#slider{
+min-height: 500px;
+background-color: #333;
+}
+#content{
+
+}
+#footer{
+
+} 

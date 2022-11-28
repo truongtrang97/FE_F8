@@ -1,0 +1,49 @@
+.box{
+    width:100px;
+    height:100px; 
+    justify-content: center; 
+             
+}
+.box-1{
+    background-color: red;
+    border: 10px solid;
+    margin:10px
+}
+.box-2{
+    background-color: rgb(0, 255, 55);
+    border: solid;  
+    margin:50px
+}   
+.box-3{
+    background-color: rgb(0, 26, 255);
+    border-width:10px;
+    border-style: dashed;
+    border-color:red;
+    /* dashed:nét đứt, solid : nét liền */
+    /* mặc định kiểu solid có border là 2px */
+   
+}
+.box-4{
+    background-color: rgb(238, 255, 0);
+    padding: 10px;
+}
+
+
+
+/* padding (đệm) là điệm thêm vào làm cho background làm dày background lên  */
+/* padding:(4 giá trị theo chiều kim đồng hồ) */
+
+/* Thuộc tính border _(đường viền) */
+/* Tính cả padding và border: làm cho kích thước element tăng lên */
+
+/* Thuộc tính margin (khoảng cách lề) */
+/* Cái ni làm tăng khoảng cách các element với nhau__không làm tăng kích thước element nhen */
+
+/* Thuộc tính box-sizing */
+/* Khi muốn thêm padding cho content ở trong box, sẽ làm tăng kích thước của box lên */
+/*  Thuộc tính box-sizing:boder-box: được hiểu*/
+/* Tổng kích thước element : */
+/* = tổng kích thước border+padding+ kích thước content */
+/* kích thước của content sẽ được tự động tính toán: */
+/* =kích thước khai báo-border-padding */
+/* box-sizing: content-box (kích thước element sẽ hiển thị bình thường như ta không set box-sizing */
