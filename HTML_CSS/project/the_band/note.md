@@ -39,3 +39,7 @@
 
 +  font-family: xét cả font chữ cho website (css trong thẻ html)
 + thẻ * : nó có tác động lên tất cả thẻ con
+
++ Giao diện modal:
+- Tạo ra lớp phủ overlay
+- Dùng position: fixed

@@ -1,0 +1,275 @@
+
+/* reset CSS */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* Không cần tính toán khi padding và margin*/
+    --heightheader:46px;
+
+    
+}
+html{
+    font-family:Arial, Helvetica, sans-serif;
+    /* font chữ ni bỏ gạch chân */
+}
+
+.clear{
+    clear:both
+}
+
+#main{
+
+}
+
+#header{
+ width:100%;
+ height:var(--heightheader);
+ background-color: #000;
+ top: 0;
+ position: fixed;
+ z-index: 1;
+
+}
+#nav{
+    display: inline-block;
+}
+#nav >li{
+    display:inline-block; 
+
+}
+
+#nav li {
+    position: relative;
+    list-style-type: none;
+    
+    
+}
+#nav >li>a{
+    color:#fff;
+    text-transform: uppercase;
+
+}
+
+#nav li a{
+    text-decoration: none;
+    display:block;
+    padding:0 24px;  
+    line-height:var(--heightheader);
+}
+#nav >li:hover >a,
+#nav #subnav li:hover a{
+    /*note chỗ ni viết gọp  */
+    /* hover vào li thì thẻ a con của li được hover */
+    color:#000;
+    background-color: #ccc;
+}
+
+#nav #subnav{
+    display:none;
+    position:absolute;
+    top:var(--heightheader);
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+}
+#nav #subnav a{
+    padding:0 12px;
+    line-height: 38px;
+    color: #000;
+}
+#nav li:hover #subnav{
+    display: block;
+}
+.icon-arrow{
+    font-size: 14px;
+}
+#header .button_search{
+float: right;
+}
+#header .search_icon{
+font-size: 20px;
+color: #fff;
+line-height: var(--heightheader);
+padding: 0 21px;
+}
+#header .button_search:hover{
+    background-color: #f44336;
+    cursor: pointer;
+}
+ /* #nav #subnav li:hover a{
+    color:#000;
+    background-color: #ccc;
+ } */
+
+#slider{
+position: relative;
+margin-top: var(--heightheader);
+padding-top: 50%;
+/* để tách header ra vì header dùng position:fixed bị nổi lên tầng trên */
+background: url(./img/slide3.jpg) top center/cover no-repeat;
+
+}
+#slider .heading1{
+    color: #fff;
+    position: absolute;
+    bottom: 32px;
+    width: 100%;
+    text-align: center;
+    /*cách 2: dùng transform  */
+    font-weight: 500;
+
+}
+#slider .content1{
+    font-size: 24px;
+    margin: 10px 0;
+    
+}
+#slider .content2{
+    font-size: 15px;
+    margin: 15px 0;
+}
+#content{
+
+}
+#content .content_section{
+    max-width: 800px;
+    padding: 64px 16px;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+#content .content_heading{
+    text-align: center;
+    font-size: 30px;
+    margin: 10px 0;
+    letter-spacing: 1px;
+
+}
+#content .content_sub_heading{
+    text-align: center;
+    margin: 15px;
+    font-size: 15px;
+    font-style: italic;
+    opacity: 0.5;
+   
+
+}
+#content .about{
+ margin: 15px 0;
+ text-align: justify;
+ font-size: 15px;
+ line-height: 1.4;
+}
+#content .list_member{
+text-align: center;
+padding: 32px 0;
+}
+
+#content .member{
+    float: left;
+    width: calc(100%/3);
+}
+#content .member p {
+font-size: 15px;
+margin: 15px 0;
+}
+#content .img_name{
+    margin-bottom: 16px;
+    width: 134px;
+    border-radius: 4px;
+}
+#content .tour{
+    background-color: #000;
+}
+#content .tour .content_heading,
+#content .tour .content_sub_heading{
+color: #ccc;
+}
+.table_ticket{
+    background-color: #fff;
+}
+.table_ticket .month{
+padding: 8px 16px;
+font-size: 15px;
+color:rgba(0, 0, 0, 0.5);
+border-bottom: 1px solid #ddd;
+}
+.table_ticket .month .item_month{
+    margin-left: 16px;
+    padding: 0 8px;
+    color: #fff;
+    background-color: #F44336;
+}
+.table_ticket .month .number{
+    float: right;
+    color: #fff;
+    padding: 2px 8px;
+    background-color: #000;
+    border-radius: 50%;
+    margin-right: 16px;  
+}
+.place{
+padding: 32px 8px;
+margin: 0 -16px;
+}
+.place .place_tour{
+float: left;
+width: calc(100%/3);
+margin-bottom: 16px;
+padding: 0 8px;
+}
+.place .img_place{
+width: 100%;
+display: block;
+}
+.place .img_place:hover{
+    opacity: 0.5;
+}
+.place .place_content{
+background-color: #fff;
+padding: 0 16px;
+font-size: 15px;
+}
+.place .place_nav{
+padding: 15px 0;
+font-weight: 700;
+}
+.place .time_nav{
+margin-bottom: 15px;
+opacity: 0.5;
+}
+.place .content_nav{
+    padding-bottom: 15px;
+    line-height: 1.4;
+
+}
+.place .button_buy{
+    display: inline-block;
+padding: 8px 16px;
+color:#fff;
+background-color: #000;
+text-decoration: none;
+margin-bottom: 16px;
+
+}
+.place .button_buy:hover {
+    color: #000;
+    background-color: #ccc;
+    cursor: pointer;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+
+
