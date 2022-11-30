@@ -96,7 +96,7 @@
                                  <p class="place_nav">New York</p>
                                  <p class="time_nav">Fri 27 Nov 2016</p>
                                  <p class="content_nav"> Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                 <a href="#" class="button_buy">BuyTickets</a>
+                                 <button class="button_buy js-buy-ticket">BuyTickets</button>
                             </div>
                         </div>
                         <div class="place_tour">
@@ -105,7 +105,7 @@
                                  <p class="place_nav">Paris</p>
                                  <p class="time_nav">Sat 28 Nov 2016</p>
                                  <p class="content_nav"> Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                 <a href="#" class="button_buy">BuyTickets</a>
+                                 <button class="button_buy js-buy-ticket">BuyTickets</button>
                             </div>
                         </div>
                         <div class="place_tour">
@@ -114,12 +114,10 @@
                                  <p class="place_nav">San Francisco</p>
                                  <p class="time_nav">Sun 29 Nov 2016</p>
                                  <p class="content_nav"> Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                 <a href="#" class="button_buy">BuyTickets</a>
+                                 <button class="button_buy js-buy-ticket">BuyTickets</button>
                             </div>
                         </div>
                     <div class="clear"></div>
-
-
                     </div>
                 </div>
             </div>
@@ -131,9 +129,6 @@
                     Fan? Drop a note!
                 </div>
             </div>
-
-            
-
         </div>
 
         <div id="footer">
@@ -141,10 +136,63 @@
         </div>
     </div>
     <div class="modal">
-     
+     <div class="buy_ticket">
+         <div class="header">
+             <div class="content_header">
+                 <i class="icon_ticket ti-gift"></i>
+                 Tickets
+             </div>
+             <div class="close_ticket ti-close js_close"></div>
+         </div>
+         <div class="content_buy_ticket">
+             <div class="input_buy_ticket">
+                 <p class="item1">
+                     <i class="icon_item1 ti-shopping-cart"></i>
+                     Tickets, $15 per person
+                 </p>
+                 <input type="text" class="textitem1" placeholder="How many" >
+             </div>
+             <div class="input_buy_ticket">
+                <p class="item1">
+                    <i class="icon_item1 ti-face-smile"></i>
+                    Send To
+                </p>
+                <input type="text" class="textitem1" placeholder="Enter email" >
+            </div>
+            <button class="button_pay">
+                PAY
+                <i class="subbutton_pay ti-angle-down"></i>
+            </button>
+            <div class="footer_buy_ticket">
+                <button class="close_buy_ticket">
+                    Close
+                    <i class="icon-close ti-close"></i>     
+                </button>
+                <p class="help_buy_ticket">
+                    Need 
+                    <a href="#">help?</a>
+                </p>
+            </div>
+         </div>
+     </div>
     </div>
     <script>
+        var button_close=document.querySelector(".js_close")
+        var modal_tickets=document.querySelector(".modal")
+        var btn_jss=document.querySelectorAll(".js-buy-ticket")
         
+        for( var btn_js of btn_jss){
+            btn_js.addEventListener("click", function() {
+                modal_tickets.classList.add("open")
+                console.log(btn_js)
+             })
+        }
+             
+        button_close.addEventListener('click', function() {    
+              modal_tickets.classList.remove("open")
+              console.log(modal_tickets)
+        })
+     
     </script>
 </body>
 </html>

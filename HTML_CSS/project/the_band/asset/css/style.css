@@ -259,15 +259,77 @@ margin-bottom: 16px;
     cursor: pointer;
 }
 .modal{
+    --greencolor: #009688;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    display: none;
+}
+
+.modal .buy_ticket {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;    
+}
+.modal .buy_ticket .header{
+    height: 130px;
+    background-color: var(--greencolor);
+    display: flex;
+    color: #fff;
+}
+
+.buy_ticket .header .content_header{
+   margin: auto;
+   font-size: 30px;
+   font-weight: 500;
+   letter-spacing: 4px;
+   display: inline-block;
 }
 
 
+.content_buy_ticket{
+    padding: 0 16px;
+    background-color: #fff;
+}
+.content_buy_ticket .input_buy_ticket .item1{
+padding: 15px 0;
+}
+.content_buy_ticket .input_buy_ticket .textitem1{
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border:1px solid #ccc;
+}
+.content_buy_ticket .button_pay{
+    margin: 16px 0;
+    padding: 16px;
+    width: 100%;
+    background-color: var(--greencolor);
+    font-size: 15px;
+    color: #fff;
+    border: none;
+}
+.footer_buy_ticket .close_buy_ticket{
+    margin: 16px 0;
+    padding: 8px 16px;
+    font-size: 15px;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+}
+.footer_buy_ticket .help_buy_ticket{
+    float: right;
+    margin: 16px 0;
+    padding: 8px 16px;
+}
+.modal .open{
+    display: flex;
+}
 
 
 
