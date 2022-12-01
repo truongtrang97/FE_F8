@@ -43,3 +43,9 @@
 + Giao diện modal:
 - Tạo ra lớp phủ overlay
 - Dùng position: fixed
+
++ margin âm bằng khoảng padding để nó bù trừ cho nhau
+
+
+
++ Tách các thuộc tính thuộc hàng và cột vào css chung 

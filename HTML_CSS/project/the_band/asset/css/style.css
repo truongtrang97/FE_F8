@@ -13,11 +13,35 @@ html{
     font-family:Arial, Helvetica, sans-serif;
     /* font chữ ni bỏ gạch chân */
 }
+/* common */
 
 .clear{
     clear:both
 }
+.text_center{
+    text-align: center;
+}
 
+.row{
+    margin-left: -16px;
+    margin-right: -16px;
+}
+
+/* tạo column */
+.col{
+    padding-left: 8px;
+    padding-right: 8px;
+    float: left;
+}
+
+.col_half{
+    width: 50%;
+}
+
+.col_third{
+    width: calc(100%/3);
+}
+/* end_ common */
 #main{
 
 }
@@ -166,11 +190,7 @@ text-align: center;
 padding: 32px 0;
 }
 
-#content .member{
-    float: left;
-    width: calc(100%/3);
-}
-#content .member p {
+#content .col p {
 font-size: 15px;
 margin: 15px 0;
 }
@@ -211,14 +231,10 @@ border-bottom: 1px solid #ddd;
 }
 .place{
 padding: 32px 8px;
-margin: 0 -16px;
-}
-.place .place_tour{
-float: left;
-width: calc(100%/3);
+/* margin: 0 -16px; */
 margin-bottom: 16px;
-padding: 0 8px;
 }
+
 .place .img_place{
 width: 100%;
 display: block;
@@ -245,7 +261,7 @@ opacity: 0.5;
 
 }
 .place .button_buy{
-    display: inline-block;
+display: inline-block;
 padding: 8px 16px;
 color:#fff;
 background-color: #000;
