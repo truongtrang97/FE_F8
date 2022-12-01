@@ -12,6 +12,7 @@
 html{
     font-family:Arial, Helvetica, sans-serif;
     /* font chữ ni bỏ gạch chân */
+    scroll-behavior: smooth;
 }
 /* common */
 
@@ -26,6 +27,17 @@ html{
     margin-left: -16px;
     margin-right: -16px;
 }
+.row::after{
+    content:"";
+    display:block;
+    clear:both;
+}
+.mt_8{
+    margin-top: 8px;
+}
+.pad_16{
+    padding-right:16px ;
+}
 
 /* tạo column */
 .col{
@@ -33,7 +45,9 @@ html{
     padding-right: 8px;
     float: left;
 }
-
+.col_full{
+    width:100%;
+}
 .col_half{
     width: 50%;
 }
@@ -361,6 +375,53 @@ padding: 15px 0;
     background-color: #ccc;
     cursor: pointer;
 }
+
+.contact{
+    padding:  32px 0;
+}
+
+.contact_form{
+ font-size: 15px;
+ 
+ 
+}
+.contact_input{
+   padding: 10px;
+   width:100%;
+   font-size: 15px;
+    
+}
+.button_send{
+padding: 8px 16px;
+margin-top: 16px;
+color: #fff;
+background-color: #000;
+border: none;
+font-size: 15px;
+float: right;
+margin-right: 8px;
+}
+
+.img_map{
+    width:100%;
+}
+#footer{
+    text-align: center;
+    padding: 64px 16px;
+    color: rgba(0, 0, 0, 0.8);
+}
+#footer .icon_footer{
+    font-size: 24px;
+}
+#footer .end_page{
+   margin: 15px;
+}
+#footer .end_page a{
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+
 
 
 

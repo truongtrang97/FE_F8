@@ -13,10 +13,10 @@
         <div id="header">
          <!--begin:nav  -->
          <ul id="nav">
-             <li><a href="">Home</a></li>
-             <li><a href="">Band</a></li>
-             <li><a href="">Tour</a></li>
-             <li><a href="">Contact</a></li>
+             <li><a href="#">Home</a></li>
+             <li><a href="#band">Band</a></li>
+             <li><a href="#tour">Tour</a></li>
+             <li><a href="#contact">Contact</a></li>
              <li>
                  <a href="#">
                     More
@@ -46,7 +46,7 @@
         </div>
 
         <div id="content">
-            <div class="content_section">
+            <div id="band" class="content_section">
                 <div class="content_heading">
                     THE BAND
                 </div>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="tour">
-                <div class="content_section">
+                <div id="tour" class="content_section">
                     <div class="content_heading">
                         TOUR DATES
                     </div>
@@ -121,18 +121,54 @@
                     </div>
                 </div>
             </div>
-            <div class="content_section">
+            <div id="contact" class="content_section">
                 <div class="content_heading">
                     CONTACT
                 </div>
                 <div class="content_sub_heading">
                     Fan? Drop a note!
                 </div>
+
+                <div class="row contact">
+                    <div class="col col_half">
+                        <p class="content_contact"><i class="ti-location-pin"></i> Chicago, US</p>
+                        <p class="content_contact"><i class="ti-mobile"></i>Phone: +00 151515</p>
+                        <p class="content_contact"><i class="ti-email"></i>Email: mail@mail.com</p>
+                    </div>
+                    <div class="col col_half contact_form ">
+                        <form action="">
+                            <div class="row pad_16">
+                                <div class="col col_half mt_8">
+                                    <input type="text"  required placeholder="Name" class="contact_input">
+                                </div>
+                                <div class="col col_half mt_8">
+                                    <input type="email" required placeholder="Email" class="contact_input">
+                                 </div>
+                            </div>
+    
+                            <div class="row pad_16">
+                                <div class="col col_full mt_8"> 
+                                    <input type="text" required placeholder="Message" class="contact_input">
+                                </div>
+                            </div>
+                                <input type="submit" value="SEND" class="button_send">
+                        </form>
+                    </div>
+               </div>
             </div>
         </div>
 
-        <div id="footer">
+        <img src="./asset/css/img/map.jpg" alt="MAP" class="img_map">
 
+        <div id="footer">
+            <i class="icon_footer ti-facebook"></i>
+            <i class="icon_footer ti-reddit"></i>
+            <i class="icon_footer ti-twitter"></i>
+            <i class="icon_footer ti-apple"></i>
+            <i class="icon_footer ti-linux"></i>
+            <i class="icon_footer ti-instagram"></i>
+            <br>
+            <p class="end_page">Powered by<a href=""> w3.css</a></p>
         </div>
     </div>
     <div class="modal">
