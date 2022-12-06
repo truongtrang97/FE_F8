@@ -12,6 +12,9 @@
 + Mobile:
 - @media(max-width:723px)
 
++ note link file resposive.css sau file main.css (ưu tiên ăn theo file link sau)
+- Tìm thẻ nào có css đó ghi đè lại tương ứng
+
 
 
 

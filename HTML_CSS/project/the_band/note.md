@@ -49,3 +49,6 @@
 
 
 + Tách các thuộc tính thuộc hàng và cột vào css chung 
++ css : overflow: hidden; khi element con vượt quá phạm vi của cha thì cho hidden đi
+
++ biến không đặt tên có kí tự gạch ngang
