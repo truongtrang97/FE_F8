@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click me!</button>
+    <br />
+    <input type="text" placeholder="Enter add car" id="input">
+    <button id="submit">ADD</button>
+    <ul id="root"></ul>
+    <script>
+
+        // + IIFE - Immediately Invoked Function Expression 
+        // - Hiểu đơn giản là 1 function expression được gọi lập tức (hay 1 biểu thức tạo ra 1 hàm và hàm ni được gọi ngay lập tức )
+        // - self-invoked function : hàm tự gọi    
+
+        ;(function(){
+            console.log('hihi')
+        })()
+        //  Trước IIFE bắt buộc có dấu ;
+        // IIFE là hàm  "private"
+         let i=0;
+        ;(function myFun(){
+            i++
+            console.log(i)
+            if(i<10)
+              myFun()
+        })()
+        // myFun()//underfine
+
+    //    Khi nào thì nên sử dụng IIFE :
+    /**
+     * Trong project bự thì tránh việc tạo ra biến global quá nhiều (dễ trùng nhau,)
+     * Khi viết thư viện thường hay sử dụng IIFE để viết , dùng IIFE thì các biến trong bị trùng với dự án người dùng 
+     */
+       
+       const app =(function(){
+            const cars=[]
+             return {
+                    add(car){
+                        this.cars.push(car)
+                    },
+                    edit(index,car){
+                        this.cars[index]=car
+                    },
+                    delete(index){
+                        this.cars.splice(index,1)
+                    }
+           }
+       })()
+       console.log(app)
+       console.log(123)
+
+
+
+    //  ----this-----
+    const button =document.querySelector('button')
+    console.log(button )
+    console.dir(button)
+    button.onclick=function(){
+        console.log(this)
+        console.log(this.innerText)
+    }
+
+    function ABC (){
+        console.log(this)
+    }
+
+    ABC() // đứng ngoài đối tượng tham chiếu tới đối tượng global
+    //this ni là window
+
+    function Car(name, color){
+        this.name=name;
+        this.color=color;
+        this.run=function(){
+            console.log(this)
+        }
+    }
+
+    // cách 2 tạo phương thức ở ngoài:
+    
+    Car.prototype.run2=function(){
+        console.log(this)
+        // context
+        function text(){
+            console.log(this)
+        }
+        text()//this trả về window
+
+        const text2=()=>{
+            console.log(this)
+        }
+        text2() // trả về Car
+    }
+
+    const MBV =new Car('MBV','black')
+    console.log(MBV)
+    MBV.run()
+    MBV.run2()
+
+    // This và đối tượng được tạo ra MBV là 1 
+
+    // ---fn.bind() method
+    this.firstname='Minh'
+    this.lastname='Thảo'
+    
+    const teacher={
+        firstname:'trang',
+        lastname:'truong',
+        getfullName(data1,data2){
+            console.log(data1,data2)
+            return `${this.firstname} ${this.lastname}`
+        }
+    }
+    console.log(teacher.getfullName())
+    // case2;
+    const case2=teacher.getfullName//cái ni là chưa gọi hàm chỉ truy cập vào hàm mà thôi
+    // caí ni là 1 object khi gán chỉ cùng trỏ về 1 vùng nhớ mà thôi (tham trị)
+    console.log(case2())
+    // cái ni là gọi hàm bình thường , không . thông qua đối tượng nên nó chọc ra window lấy Minh Thảo ngoai window
+
+    const case3= teacher.getfullName.bind(teacher)// truyền đối tượng mà this trỏ tới, có thể truyền thêm đối số cho hàm getfullName(hạn chế nếu đối số đó được fix, không thì nên truyền khi gọi ở dưới)
+    console.log(case3(123,456)) //trangtruong
+
+    //bind _2
+
+   const $ = document.querySelector.bind(document)
+   const $$ =document.querySelectorAll.bind(document)
+   //bản chất ni là this, nếu không bind nó sẽ hiểu là trỏ ra window
+   console.log($('button'))
+   console.log($$('button'))
+
+    // Tạo ứng dụng quản lý ô tô
+
+   const appcar =(()=>{
+     const cars=['BMV']
+     const root=$('#root')
+     const input=$('#input')
+     const submit=$('#submit')
+     
+     console.log(root)
+     return {
+         add(car){
+             cars.push(car)
+         },
+         delete(index){
+             cars.splice(index,1)
+         },
+         render(){
+             const html=  cars.map((car,index)=>
+                 `<li>
+                    ${car}
+                    <span style="font-size:20px ;padding:0px 2px ;background-color:green" data-index="${index}" class="delete">&times</span>
+                  </li>`
+             ).join('')
+             root.innerHTML=html
+         },
+         handleDelete(e){
+            const Deletebtn=e.target.closest(".delete")
+            if(Deletebtn){
+                const index=Deletebtn.dataset.index
+                console.log(index)
+                this.delete(index)
+                this.render()
+            }
+         },
+         init(){
+             //Handle DOM event
+             submit.onclick=()=>{
+                 this.add(input.value)
+                 this.render()
+             //add xong sẽ bị xóa value của input và tự focus lại
+                input.value=null
+                input.focus()
+             }
+             root.onclick=this.handleDelete.bind(this)
+             this.render()
+         }
+     }
+    })()
+    appcar.init()
+
+    </script>
+</body>
+</html>
