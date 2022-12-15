@@ -1,4 +1,4 @@
-import html from "../score_todo.js";
+import html from "../core_todo.js";
 import { connect } from "../store.js";
 const connector = connect()
  export function Footer(){

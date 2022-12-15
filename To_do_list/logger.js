@@ -1,12 +1,12 @@
 export default function logger(reducer){
-    return (prevstate,action,args)=>{
+    return (prevState, action, args)=>{
         console.group(action)
-        console.log("prevstate", prevstate)
+        console.log("prevState", prevState)
         console.log("action args", args)
 
-        const nextstate= reducer(prevstate,action,args) 
-         console.log("nextstate",nextstate)
-        return nextstate
+        const nextState= reducer(prevState, action, args) 
+         console.log("nextstate",nextState)
+        return nextState
     }
 }
 // Bình thường chưa chạy là underfined

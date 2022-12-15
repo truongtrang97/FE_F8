@@ -1,4 +1,4 @@
-import { createStore } from "./score_todo.js";
+import { createStore } from "./core_todo.js";
 import reducer  from "./reducer.js";
 import withLogger from "./logger.js"
 

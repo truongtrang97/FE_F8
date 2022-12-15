@@ -29,7 +29,6 @@ const actions={
         const todo=todos[index]
         todo.completed=!todo.completed
         storage.set(todos)
-        console.log(todo)
     }
     // object trong js có tính chất tham chiếu, nên không nhất thiết trả ra state mới nên dùng dustrusturing cho todos ?? chỗ tham chiếu
 }
