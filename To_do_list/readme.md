@@ -21,3 +21,7 @@
 
 
 - Phải có connect mới lấy được dữ liệu từ storage
+
+- note 1 số...
+- input , label ?? input lồi hiển thi label --> todolist
+- todos.forEach((todo)=>todo.completed=completed) khác todo.completed==completed) ntn ? viết cái ni k toggle all được 

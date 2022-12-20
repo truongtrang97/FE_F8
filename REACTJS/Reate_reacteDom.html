@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+         1. document.createElement()
+         2. document.body.appendChild(): THÊM CON CỦA BODY VÀO
+         3. console.dir()
+         4. innerText,id, className,style
+         -->
+         <div id="root"></div>
+         <script>
+             const h1 = document.createElement("h1");
+             console.log(h1)
+             h1.innerHTML="hello hihi"
+             //note : element chỉ ở trong bộ nhớ thâu chưa được render vào DOM
+            //  cách lm phải thêm vào 1 element trong DOM
+            //  Phải get element đó ra
+            // - cách 1
+            // const body= document.querySelector('body')
+            // console.log(body)
+            // body.appendChild(h1)
+            // --làm như ri cách 2
+            // document.body.appendChild(h1)
+
+            //  đưa element vào dom qua root
+            const root= document.querySelector('#root')
+            root.appendChild(h1)
+            h1.id="heading"//cái ni là để thêm id
+            // className là property name có sẵn trong node element
+            h1.className="test"
+            // h1.style.color="red"
+            // thêm nhiều thuộc tính
+            // h1.style="color:green;  font-size:50px"
+            //  cách 2 ; assign {} mới vào property h1.style
+            Object.assign(h1.style,{
+                color:"red",
+                backgroundColor:"green"
+            })
+            // note key cuả object ơair viết kiểu như con lạc đà
+
+        </script>
+</body>
+</html>
