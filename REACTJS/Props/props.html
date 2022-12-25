@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>props</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            // props là object chứa những thuộc tính để mô tả cho Reactelement mà ta tạo ra
+            // React element
+            /**
+             * Sứ dụng props giống như attribute của thẻ html
+             * 2 props class, for=> className, htmlFor (for ni trong thẻ label)
+             * Phải tuân theo quy ước có sẵn (như html không được thêm 1 props khác với quy tắc)
+             */
+            //React component
+            /**
+             * Sử dungj props như đối số cho component (giống như sử dụng đối số cho function)
+             * Tự do đặt tên cho props
+             * Đặt theo CamelCase
+             * Có thể bao gồm dấu gạch ngang
+             */
+            // NOTE : prop "key " là props đặc biệt ==> mục đích để k warning(cái ni chỉ sử dụng khi đưa component trong array thâu)
+            // props cơ bản là đối số của component
+            // => Props có thể là bất kì kiểu dữ liệu gì
+            // - Sử dụng destructuring
+            function PostItem(props) {
+                //    chỗ ni thay vì if_else có thể dùng đặt default nếu dùng destructuring
+                if (typeof props.callback === 'function') {
+                    props.callback(Math.random());
+                }
+                return (
+                    <div className="posts-list">
+                        <div className="posts-list">
+                            <img src={props.img} alt={props.title} />
+                            <h2 className="post-item">{props.title}</h2>
+                            <p className="post-desc">{props.desc}</p>
+                            <p className="post-publised">{props.publised}</p>
+                        </div>
+                    </div>
+                );
+            }
+
+            function Button({ title, ...inputrest }) {
+                return (
+                    <div>
+                        <label>{title}</label>
+                        <input {...inputrest} />
+                    </div>
+                );
+            }
+
+            function Buttons({children}){
+                return <button>{children}</button>//Như ri bắt buộc phải truyền children , truyền tên khác không nhận được
+            }
+            //lưu ý chỗ return(viết dấu ngoặc ni sát chớ không sẽ bị error)
+
+            function App() {
+                return (
+                    <div id="wrapper">
+                        <PostItem
+                            img="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            title="C#(.NET)- Tương tác với file Excel"
+                            desc="Bạn có kiến thức về ngôn ngữ C#"
+                            publised="Một nay trước .5 phút"
+                            callback={(random) => {
+                                console.log('random', random);
+                            }}
+                        />
+                        <PostItem
+                            img="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            title="C#(.NET)- Tương tác với file Excel"
+                            desc="Bạn có kiến thức về ngôn ngữ C#"
+                            publised="Một nay trước .7 phút"
+                        />
+                        <PostItem
+                            img="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            title="C#(.NET)- Tương tác với file Excel"
+                            desc="Bạn có kiến thức về ngôn ngữ C#"
+                            publised="Một nay trước .10 phút"
+                        />
+                        <Button title="Đây là input" label="fullname" placeholder="Enter name" onFocus={()=>console.log(Math.random())}/>
+                        <Buttons>CLICK ME && {false || "hihi moi người"}</Buttons>
+                    </div>
+                );
+            }
+            ReactDOM.render(<App />, document.querySelector('#root'));
+            // ReactElement những thẻ trong JSX giống như thẻ html
+            // Reactcomponent là những function , khi dùng JSX để gọi đến component như ta gọi function ak
+            // hay dùng callback trong props dể dùng Domevent
+            // Khi truyền props cho functions ta truyền dưới dạng object
+            // thẻ input đi chung vz label khi focus vào thẻ label thì cũng tự focus vào input thì ta đặt tên id của input bằng tên for của thẻ label
+
+            // PROP trong JSX
+            //  Khi tạo ra component và truyền prop có những các sau
+            // <YourComponent
+            //  propsName1="string literals" : quy ước chỗ ni dùng dấu nháy kép
+            //  propsName2={expression} : expression là biểu thức, nên không truyền được if_else, switch_case
+
+            // prop default to "true"
+            //  ứng dụng: spread/rest props
+            // Children prop
+        </script>
+    </body>
+</html>

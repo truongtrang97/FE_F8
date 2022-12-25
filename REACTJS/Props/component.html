@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // component chúng ta  tự định nghĩa phải viết in hoa chữ cái đầu
+        // bất cứ function nào cũng có thể làm component được, kể cả function đó là method của 1 object 
+
+        const Form={
+             Input(){
+                 return <input />
+             },
+             Checkbox(){
+                 return <input type="checkbox" />
+             }
+        }
+        function Button({title,href,onClick}){
+            let Component ="button"
+            // nên đặt bằng let để gán lại
+            const props={}
+            if(href){
+                Component='a'
+                props.href=href
+            }
+            if(onClick){
+                props.onClick=onClick
+            }
+            console.log(onClick)
+            // sử dụng toán tử spread để giải onclick vào đây
+            return <Component {...props}>{title}</Component>
+        }
+
+        function App(){
+            const type ="Input"
+            const Component=Form[type]
+            let firstAccess = false
+            return( <div>
+                <Button
+                title="Click me!"
+                href="https://fullstack.edu.vn/"
+                onClick={()=>console.log(Math.random())}
+                />
+                {firstAccess&& <h1>Wellcom to home</h1>}
+                </div>
+            )
+        }
+    ReactDOM.render(<App />, document.getElementById('root'))
+
+//   1 nut bấm vào dẫn đi 1 link khác bằng thẻ a, và thực hiện lun 1 eventdom
+// tạo ra 1 component đa năng
+//  khi viết thẻ thì viết bt như html còn khi muốn thay thế tên thẻ bằng 1 biến khác thì phải viết hoa tên biến đó
+// Boolean, null, undefined  không được render ra
+//  cái ni để hỗ trợ render logic ta dùng điều kiện 
+
+    </script>
+</body>
+</html>
